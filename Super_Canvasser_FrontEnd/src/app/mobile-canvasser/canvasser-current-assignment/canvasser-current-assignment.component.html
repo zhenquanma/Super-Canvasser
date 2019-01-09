@@ -1,0 +1,159 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+
+
+
+
+<div class="user-info-container">
+  <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Current Assignment</h3>
+                </div>
+
+                <div class="panel-body">
+
+                            <label> Campaign ID:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.CampaignID}}</label>
+                            <br/>
+
+                            <label> Campaign Name:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.CampaignName}}</label>  
+                            <br/>
+
+
+                            <label> Talking Points:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.TalkingPoints}}</label>
+                            <br/>
+
+                            <!-- <label> Questions:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.Questions}}</label>
+                            <br/> -->
+
+
+                            <label> Assignment ID:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.AssignmentID}}</label> 
+                            <br/>
+
+                            <label> Visit duration:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.VisitDuration}}</label>
+                            <br/>
+                
+                            <label> Assignment Date:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.AssignmentDate}}</label>
+                            <br/>
+                    
+                
+                            <label>Canvasser:</label>
+                            <label *ngIf="assignmentInfo?.CampaignID"> {{assignmentInfo.Canvasser}}</label>
+                            <br/>
+                
+                </div>
+
+  </div>
+</div>
+
+
+
+
+
+<div class="table-responsive list-right col-md-5">
+
+        <table id="mytable" class="table table-bordred table-striped" >
+             <thead>
+                      <th>Current Location</th>
+                      <th>View</th>
+                      <!-- <th>Direction</th> -->
+             </thead>
+             <tbody>
+
+                    <td><p > {{CurrentLocation.LocationName}}</p></td>
+                    <td><p data-placement="top" data-toggle="tooltip" title="View"><button class="btn btn-primary btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)=viewLocation(CurrentLocation)><span class="glyphicon glyphicon-eye-open"></span></button></p></td>
+                    <!-- <td><p data-placement="top" data-toggle="tooltip" title="Direction"><button class="btn btn-primary btn-xs" data-title="Direction" data-toggle="modal" data-target="#direction" (click)=directLocationInMap(location)><span class="glyphicon glyphicon-map-marker"></span></button></p></td> -->
+            </tbody>
+                    
+        </table>       
+</div>
+
+
+
+
+<div class="table-responsive list-right col-md-5">
+        <table id="mytable" class="table table-bordred table-striped" >
+      
+             <thead>
+                      <th>Next Location</th>
+                      <th>View</th>
+                      <!-- <th>Direction</th> -->
+             </thead>
+             <tbody>
+                    <td><p> {{NextLocation.LocationName}}</p></td>
+                    <td><p data-placement="top" data-toggle="tooltip" title="View"><button class="btn btn-primary btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)=viewLocation(NextLocation)><span class="glyphicon glyphicon-eye-open"></span></button></p></td>
+                    <!-- <td><p data-placement="top" data-toggle="tooltip" title="Direction"><button class="btn btn-primary btn-xs" data-title="Direction" data-toggle="modal" data-target="#direction" (click)=directLocationInMap(location)><span class="glyphicon glyphicon-map-marker"></span></button></p></td> -->
+            </tbody>
+                    
+        </table>                   
+</div>
+
+
+
+
+<br/>
+
+
+
+                    <div class="col-sm-7" >
+                            <agm-map 
+                            [latitude]="inilat"
+                            [longitude]="inilng"
+                            [zoom]="zoom"
+                            [disableDefaultUI]="false"
+                            [zoomControl]="false"
+                            (mapClick)="mapClicked($event)"
+                            >
+                            
+                            <agm-marker 
+                                *ngFor="let m of markers; let i = index"
+                                (markerClick)="clickedMarker(m.label, i)"
+                                [latitude]="m.lat"
+                                [longitude]="m.lng"
+                                [label]="m.label"
+                                [markerDraggable]="m.draggable"
+                                (dragEnd)="markerDragEnd(m, $event)">
+                                
+                                <agm-info-window>
+                                <strong>{{m.Info}}</strong>
+                                </agm-info-window>
+                                
+                            </agm-marker>
+                            </agm-map>
+                    </div>
+
+
+
+
+
+<div class="table-responsive list-right col-md-5">
+        <table id="mytable" class="table table-bordred table-striped" >
+
+            <thead>
+                        <th>Locations</th>
+                        <th>Status</th>
+                        <th>View</th>
+                        <!-- <th>Direction</th> -->
+            </thead>
+
+            <tbody>
+                        <tr *ngFor="let location of locationsList">  
+                            <td *ngIf="location?.LocationName" >{{location.LocationName}}</td>
+                            <td *ngIf="location?.LocationName" >{{location.Status}}</td>
+                            <td><p data-placement="top" data-toggle="tooltip" title="View"><button class="btn btn-primary btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)=viewLocation(location)><span class="glyphicon glyphicon-eye-open"></span></button></p></td>
+                            <!-- <td><p data-placement="top" data-toggle="tooltip" title="Direction"><button class="btn btn-primary btn-xs" data-title="Direction" data-toggle="modal" data-target="#direction" (click)=directLocationInMap(location)><span class="glyphicon glyphicon-map-marker"></span></button></p></td> -->
+                        </tr>
+            </tbody>
+        </table>
+</div>

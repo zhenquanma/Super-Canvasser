@@ -1,0 +1,105 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+ <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<button class="btn btn-success" (click)=jumpReturn() >Return</button>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-xs-12 col-sm-12 col-md-4 well well-sm"  id="create-campaian-div">
+
+            <legend><a href="#"><i class="glyphicon glyphicon-globe"></i></a> Edit Campaign {{campaignWindow.CampaignId}}</legend>
+            <label>Campaign Name:</label>
+            <input  class="form-control" name="campaignName" placeholder="Campaign Name" [(ngModel)]="campaignWindow.CampaignName" type="text" required="required" />
+            <br/>
+            <label>Talking Points:</label>           
+            <textarea  class="form-control" name="talkingPoints" placeholder="Talking Points" [(ngModel)]="campaignWindow.TalkingPoints"  type="text" ></textarea>
+            <br/>
+            <label>Questions:</label>
+            <textarea  class="form-control"  name="question" placeholder="Questions" [(ngModel)]="campaignWindow.Questions" type="text" ></textarea>
+            <br/>
+            <label>Locations:</label>
+            <textarea  class="form-control"  name="location" placeholder="Locations,  NUMBER, STREET, UNIT, CITY, STATE, ZIP.  Example: 40, Piedmont Drive, Apartment 16B, Brookhaven, NY, 11776  " [(ngModel)]="campaignWindow.Locations" type="text" ></textarea>
+            <br/>
+            <label>Visit Duration:</label>
+            <input  class="form-control" name="visitduration" placeholder="Visit Duration" [(ngModel)]="campaignWindow.VisitDuration"  type="text" required="required" />
+            <br/>
+
+  
+            <div>
+                 <label for="">Start Date:   </label>
+                 <input min="{{today}}" max="{{campaignWindow.EndDate}}"type="date" required="required" [(ngModel)]="campaignWindow.StartDate" (change)="changeDate($event)"/>
+
+            </div>
+            <br/>
+            <div >
+                 <label for="">End Date: </label>
+                 <input min="{{campaignWindow.StartDate}}"type="date" required="required" [(ngModel)]="campaignWindow.EndDate" (change)="changeDate($event)"/>
+
+            </div>
+ 
+            <br/>
+
+            <label>Managers</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+
+                                                    <div class="select-checkbox-div" [ngClass]="{ 'selectOpen' : isManagersSelectOpen }">
+                                                        <div class="select-checkbox-show clear-float" (click)="clickManagersSelect()">
+                                                            <div class="show-data">select Managers</div>
+                                                            <i class="fa-select"></i>
+                                                        </div>
+                                                        <div class="select-checkbox-content">
+                                                            <div class="select-checkbox-list">
+                                                                <div class="select-checkbox-item" *ngFor="let user of managersList">
+                                                                            <div>
+                                                                                <input type="checkbox" [checked]="isManagersCheck(user)" (click)="clickManagerItem($event,user)" />
+                                                                                {{user}}
+                                                                            </div>
+                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                </div>
+            </div>
+            
+            <br/>
+
+            <label>Canvassers</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+
+                                                <div class="select-checkbox-div" [ngClass]="{ 'selectOpen' : isCanvassersSelectOpen }">
+                                                    <div class="select-checkbox-show clear-float" (click)="clickCanvassersSelect()">
+                                                        <div class="show-data">select Canvassers</div>
+                                                        <i class="fa-select"></i>
+                                                    </div>
+                                                    <div class="select-checkbox-content">
+                                                        <div class="select-checkbox-list">
+                                                            <div class="select-checkbox-item" *ngFor="let user of canvassersList">
+                                                                        <div>
+                                                                            <input type="checkbox" [checked]="isCanvassersCheck(user)" (click)="clickCanvasserItem($event,user)" />
+                                                                            {{user}}
+                                                                        </div>
+                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                </div>
+            </div>
+
+
+            <br/>
+
+
+            <button [disabled]="!campaignWindow.CampaignName || !campaignWindow.EndDate || !campaignWindow.StartDate" class="btn btn-lg btn-primary btn-block" type="submit" (click)="editCampaignBackend()">
+                Edit Campaign</button>
+      
+        </div>
+    </div>
+</div>

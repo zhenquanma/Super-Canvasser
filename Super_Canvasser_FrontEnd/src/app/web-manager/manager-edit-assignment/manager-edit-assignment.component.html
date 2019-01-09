@@ -1,0 +1,77 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+ <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<button class="btn btn-success" (click)=jumpReturn() >Return</button>
+<br/>
+<div class="container" >
+    <div class="row">
+        <div class="col-md-offset-4 col-xs-12 col-sm-12 col-md-4 well well-sm">
+   <legend><a href="#"><i class="glyphicon glyphicon-globe"></i></a> Edit Assignment</legend>
+     
+
+<div>
+            <label for="">Assignment Date: </label>
+                <input max="{{maxDate}}" min="{{minDate}}"type="date" [(ngModel)]="assignmentWindow.AssignmentDate" (change)="changeDate($event)"/>
+
+
+</div>
+
+
+            <!-- <label>Locations</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+        
+                                        <div class="select-checkbox-div" [ngClass]="{ 'selectOpen' : isLocationsSelectOpen }">
+                                            <div class="select-checkbox-show clear-float" (click)="clickLocationsSelect()">
+                                            <div class="show-data">select Location</div>
+                                            <i class="fa-select"></i>
+                                            </div>
+                                            <div class="select-checkbox-content">
+                                            <div class="select-checkbox-list">
+                                                <div class="select-checkbox-item" *ngFor="let location of locationsList">
+                                                            <div>
+                                                                <input type="checkbox" [checked]="isLocationsCheck(location)" (click)="clickLocationItem($event,location)" />
+                                                                {{location}}
+                                                            </div>
+                                    
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                </div>
+            </div> -->
+
+
+
+            <label>Canvasser</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <select class="form-control"  [(ngModel)]="assignmentWindow.Canvasser">
+                       <!-- <div *ngFor="let option of assignmentWindow.CanvasserOption"> -->
+                       <option *ngFor="let option of canvasserList" [ngValue]="option">{{option}}</option>
+                       <!-- <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option> -->
+
+                       <!-- </div> -->
+                    </select>
+                </div>
+            </div>
+
+
+            <br/>
+
+
+
+
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="editAssignmentBackend()">
+                Edit Assignment</button>
+            <!-- </form> -->
+        </div>
+    </div>

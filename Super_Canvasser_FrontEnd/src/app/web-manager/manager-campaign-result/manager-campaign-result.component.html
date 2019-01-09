@@ -1,0 +1,135 @@
+
+<div class="col-sm-7" >
+
+        <div class="panel-footer">
+              <button class="btn btn-success" (click)=showAllLocationInMap()>Show All Location In Map</button>
+        </div>
+
+            <agm-map 
+            [latitude]="inilat"
+            [longitude]="inilng"
+            [zoom]="zoom"
+            [disableDefaultUI]="false"
+            [zoomControl]="false"
+            (mapClick)="mapClicked($event)"
+            >
+            
+                  <agm-marker 
+                      *ngFor="let m of markers; let i = index"
+                      (markerClick)="clickedMarker(m.label, i)"
+                      [latitude]="m.lat"
+                      [longitude]="m.lng"
+                      [label]="m.label"
+                      [markerDraggable]="m.draggable"
+                      (dragEnd)="markerDragEnd(m, $event)">
+                      
+                            <agm-info-window>
+                              <strong>{{m.Info}}</strong>
+                            </agm-info-window>
+                    
+                  </agm-marker>
+            
+            
+            
+            </agm-map>
+  
+
+
+</div>
+
+
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+            <div class="table-responsive list-right col-md-5">
+
+                <h1>Statistical summary:</h1>
+                  <table id="mytable" class="table table-bordred table-striped" >
+                        <thead>
+                                <th>Average of Rating</th>
+                                <th>Standard Deviation of Rating</th>
+                        </thead>
+                    
+                        <tbody>
+                                <tr>
+                                  <td  >{{staticResult.AverageOfRating}}</td>
+                                  <td  >{{staticResult.StandardDeviationOfRating}}</td>
+                                </tr>
+                        </tbody>
+                  </table>
+            </div>
+
+
+
+
+            <div class="table-responsive list-right col-md-5">
+                 <h1>Result detail:</h1>
+
+                <table id="mytable" class="table table-bordred table-striped" >
+
+                    <thead>
+                              <th>Location</th>
+                              <th>Rating</th>
+                              <th>Staus</th>
+                              <th>View in map</th>
+                              <th>Detail</th>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let location of locationsList">
+                        
+                        <td *ngIf="location?.LocationName" >{{location.LocationName}}</td>
+                        <td *ngIf="location?.LocationName" ><ngb-rating [(rate)]="location.Rating"></ngb-rating></td>
+                        <td *ngIf="location?.LocationName" >{{location.Status}}</td>
+                          <td><p data-placement="top" data-toggle="tooltip" title="View"><button class="btn btn-primary btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)=viewLocationInMap(location)><span class="glyphicon glyphicon-eye-open"></span></button></p></td>
+                          <td><p data-placement="top" data-toggle="tooltip" title="Result"><button class="btn btn-primary btn-xs" data-title="Result" data-toggle="modal" data-target="#Result" (click)=viewResultDetail()><span class="glyphicon glyphicon-record"></span></button></p></td>
+                  
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="table-responsive list-right col-md-5">
+
+              <h1>Percentage of Question:</h1>
+                <table id="mytable" class="table table-bordred table-striped" >
+                
+                    <thead>
+                              <th>Question</th>
+                              <th>Yes(%)</th>
+                              <th>No(%)</th>
+                              <th>Give up(%)</th>
+                    </thead>
+              
+                    <tbody>
+                          <tr *ngFor="let question of questionsList">
+                      
+                            <td *ngIf="question?.Question" >{{question.Question}}</td>
+                            <td *ngIf="question?.Question" >{{question.Yes}}</td>
+                            <td *ngIf="question?.Question" >{{question.No}}</td>
+                            <td *ngIf="question?.Question" >{{question.GiveUp}}</td>
+                        
+                          </tr>
+                    </tbody>
+              </table>
+              
+            </div>
+

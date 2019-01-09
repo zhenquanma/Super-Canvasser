@@ -1,0 +1,78 @@
+
+              <div class="" >
+                  <div class="panel-footer">
+                      <button class="btn btn-success" (click)=showAllLocationInMap()>Show All Location In Map</button>
+                </div>
+                        <agm-map 
+                          [latitude]="inilat"
+                          [longitude]="inilng"
+                          [zoom]="zoom"
+                          [disableDefaultUI]="false"
+                          [zoomControl]="false"
+                          (mapClick)="mapClicked($event)"
+                        >
+                        
+                              <agm-marker 
+                                  *ngFor="let m of markers; let i = index"
+                                  (markerClick)="clickedMarker(m.label, i)"
+                                  [latitude]="m.lat"
+                                  [longitude]="m.lng"
+                                  [label]="m.label"
+                                  [markerDraggable]="m.draggable"
+                                  (dragEnd)="markerDragEnd(m, $event)">
+                                  
+                                    <agm-info-window>
+                                      <strong>{{m.Info}}</strong>
+                                    </agm-info-window>
+                                
+                              </agm-marker>
+                        
+                        
+                        
+                        </agm-map>
+              </div>
+  
+  
+  
+  
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+
+
+          <div class="table-responsive list-right ">
+                <h1>Upcoming Assignment</h1>
+                    <table id="mytable" class="table table-bordred table-striped" >
+                          <thead>
+                                    <th>Assignment ID</th>
+                                    <!-- <th>Assignment Name</th> -->
+                                    <th>Assignment Date</th>
+                                    <th>Number of Location</th>
+                                    <th>Visit Duration</th>
+                                    <th>View in map</th>
+                                    <!-- <th>View Detail</th> -->
+                          
+                              
+                          </thead>
+
+                          <tbody>
+                                <tr *ngFor="let upcomingAssignment of upcomingAssignmentsList"> 
+                                    <td *ngIf="upcomingAssignment?.AssignmentID" >{{upcomingAssignment.AssignmentID}}</td>
+                                    <!-- <td *ngIf="upcomingAssignment?.AssignmentID" >{{upcomingAssignment.AssignmentName}}</td> -->
+                                    <td *ngIf="upcomingAssignment?.AssignmentID" >{{upcomingAssignment.AssignmentDate}}</td>
+                                    <td *ngIf="upcomingAssignment?.AssignmentID" >{{upcomingAssignment.LocationNumber}}</td>
+                                    <td *ngIf="upcomingAssignment?.AssignmentID" >{{upcomingAssignment.VisitDuration}}</td>
+                                    <td><p data-placement="top" data-toggle="tooltip" title="View"><button class="btn btn-primary btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)=viewUpcomingAssignmentInMap(upcomingAssignment)><span class="glyphicon glyphicon-eye-open"></span></button></p></td>
+                                    <!-- <td><p data-placement="top" data-toggle="tooltip" title="Detail"><button class="btn btn-primary btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)=viewUpcomingAssignmentInMap(upcomingAssignment)><span class="glyphicon glyphicon-eye-open"></span></button></p></td> -->
+                           
+                                  </tr>
+                          </tbody>
+
+                    </table>
+          </div>

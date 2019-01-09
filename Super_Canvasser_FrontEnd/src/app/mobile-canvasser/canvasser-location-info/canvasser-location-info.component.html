@@ -1,0 +1,191 @@
+        <div class="col-md-1 ">
+            <button class="btn btn-success" (click)=jumpReturn()>Return</button>
+        </div>
+
+
+        <div class="col-md-2 ">
+            <button class="btn btn-success" (click)=postCanvasserResult()>Submit</button>
+        </div>
+
+
+        <br/>
+        <br/>
+        <hr>
+
+
+
+
+        <div class="col-sm-7" >
+
+                    <agm-map 
+                    [latitude]="inilat"
+                    [longitude]="inilng"
+                    [zoom]="zoom"
+                    [disableDefaultUI]="false"
+                    [zoomControl]="false"
+                    (mapClick)="mapClicked($event)"
+                    >         
+                            <agm-marker 
+                                *ngFor="let m of markers; let i = index"
+                                (markerClick)="clickedMarker(m.label, i)"
+                                [latitude]="m.lat"
+                                [longitude]="m.lng"
+                                [label]="m.label"
+                                [markerDraggable]="m.draggable"
+                                (dragEnd)="markerDragEnd(m, $event)">
+                                
+                                    <agm-info-window>
+                                        <strong>{{m.Info}}</strong>
+                                    </agm-info-window>
+                            
+                            </agm-marker>
+                    
+                    </agm-map>
+
+
+            <br/>
+            <hr>
+
+                    <div >
+                        <h3>Talking Points:</h3>
+                        <textarea readonly class="form-control" name="talkingPoints" placeholder="Talking Points"   type="text" rows="5">{{TalkingPoints}}</textarea>
+                    </div>
+
+
+            <br/>
+            <hr>
+
+                    <div >
+                        <h3>Rating of this visit:</h3>
+                        <ngb-rating [(rate)]="currentRate" ></ngb-rating>
+                    </div>
+
+
+            <br/>
+            <hr>
+
+
+
+                    <div >
+                        <h3>Note:</h3>
+                        <textarea    class="form-control" name="note" placeholder="Note" [(ngModel)]="Note"  type="text" rows="10"></textarea>                
+                    </div>
+        
+            <br/>
+
+
+        </div>
+
+  
+
+
+
+
+
+
+
+
+       
+
+
+
+        <div class="col-sm-5">
+
+                <div>
+                    <h3>Speak to anyone?(if No, just submit)</h3>
+                    
+                    <div>
+                        <input type="radio" name="start-question"  value="A" [(ngModel)]="speakAnswer"  />
+                        <label for="start-question-A">A) Yes </label>
+                    </div>
+                    
+                    <div>
+                        <input type="radio" name="start-question" value="B" [(ngModel)]="speakAnswer" />
+                        <label for="start-question-B">B) No</label>
+                    </div>  
+                </div>
+            
+                
+                <br/>
+                <hr>
+            
+            
+            
+                            <div *ngFor="let q of Questions" >
+                                
+                                        <h3>{{q.Question}}</h3>
+            
+            
+                                            <div>
+                                                <input type="radio" name="{{q.QuestionId}}" value="A" [(ngModel)]="q.Answer" />
+                                                <label >A) Yes </label>
+                                            </div>
+                                            
+                                            <div>
+                                                <input type="radio" name="{{q.QuestionId}}"  value="B" [(ngModel)]="q.Answer"/>
+                                                <label >B) No</label>
+                                            </div>
+                                            
+                                            <div>
+                                                <input type="radio" name="{{q.QuestionId}}"  value="C" [(ngModel)]="q.Answer"/>
+                                                <label >C) Give Up</label>
+                                            </div>
+
+                                        
+                                            <br/>
+                                            <hr>
+            
+                            </div>
+   
+            
+        </div>
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>Talking point</h1> -->
+<!-- 
+<h1>(1) whether the canvasser spoke to anyone</h1>
+<h1>(2) rating of how successful the visit was (0-5 start)</h1>
+<h1>(3) answer the question</h1>
+<h1>(4) breif notes</h1>
+
+<button> finish </button> -->
+
+
+
+
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

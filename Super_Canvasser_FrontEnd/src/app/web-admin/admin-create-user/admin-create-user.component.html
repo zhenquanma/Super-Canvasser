@@ -1,0 +1,77 @@
+
+
+
+
+
+
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+ <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-offset-4 col-xs-12 col-sm-12 col-md-4 well well-sm">
+
+       
+            <legend><a href="#"><i class="glyphicon glyphicon-globe"></i></a> User </legend>
+           
+            <label>UserName </label>
+            <input class="form-control" name="User Name" placeholder="User Name" type="text" [(ngModel)]="userWindow.UserName"/> 
+   
+           
+            <label> Password </label>
+            <input class="form-control" name="Password" placeholder="Password" type="text" [(ngModel)]="userWindow.Password"/>
+
+   
+           
+            <label> First Name </label>
+             <input class="form-control" name="First Name" placeholder="First Name" type="text" [(ngModel)]="userWindow.FirstName"/>
+
+            <label> Last Name </label>
+             <input class="form-control" name="Last Name" placeholder="Last  Name" type="text" [(ngModel)]="userWindow.LastName"/>
+
+    
+
+            <!-- <label>Role</label>
+            <input class="form-control" name=" Role" placeholder=" Role" type="text" [(ngModel)]="userInfoWindow.Role"/> -->
+            <label>Role:</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+
+                                                    <div class="select-checkbox-div" [ngClass]="{ 'selectOpen' : isRolesSelectOpen }">
+                                                            <div class="select-checkbox-show clear-float" (click)="clickRolesSelect()">
+                                                                <!-- <div class="show-data">{{ selectedName }}</div> -->
+                                                                <div class="show-data">select Roles</div>
+                                                                <i class="fa-select"></i>
+                                                            </div>
+                                                            <div class="select-checkbox-content">
+                                                                <div class="select-checkbox-list">
+                                                                    <div class="select-checkbox-item" *ngFor="let role of rolesList">
+                                                                                <div>
+                                                                                    <input type="checkbox" [checked]="isRoleCheck(role)" (click)="clickRoleItem($event,role)" />
+                                                                                    {{role}}
+                                                                                </div>
+                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                </div>
+            </div>
+
+<br/>
+
+
+            <button [disabled]="!userWindow.UserName" class="btn btn-lg btn-primary btn-block" type="submit" (click)="createUserBackend()">
+                Creart User</button>
+ 
+        </div>
+    </div>
+
+

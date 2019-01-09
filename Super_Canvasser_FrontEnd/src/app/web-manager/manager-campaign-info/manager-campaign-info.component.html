@@ -1,0 +1,55 @@
+
+
+
+
+    <div class="user-info-container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Campaign Info</h3>
+            </div>
+            <div class="panel-body">
+
+                    <label> Campaign ID:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.CampaignID}}</label>
+                   
+                    <br/>
+
+                    <label> Campaign Name:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.CampaignName}}</label>
+                
+                    <br/>
+                    <label> Talking Points:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.TalkingPoints}}</label>
+                    <br/>
+                    <!-- <label> Questions:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.Questions}}</label>
+                    <br/> -->
+                    <!-- <label> Locations:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.Locations}}</label>
+                    <br/> -->
+                    <label> Visit duration:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.VisitDuration}}</label>
+                    <br/>
+        
+                    <label> Start Date:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.StartDate}}</label>
+                    <br/>
+                    <label> End Date:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.EndDate}}</label>
+                    <br/>
+    
+                    <label>Managers:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.Managers}}</label>
+                    <br/>
+        
+                    <label>Canvassers:</label>
+                    <label *ngIf="campaignInfo?.CampaignID"> {{campaignInfo.Canvassers}}</label>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>

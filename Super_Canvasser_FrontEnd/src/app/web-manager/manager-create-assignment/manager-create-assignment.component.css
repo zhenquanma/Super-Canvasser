@@ -1,0 +1,193 @@
+/* #create-campaign-div { MARGIN-RIGHT: auto; MARGIN-LEFT: auto; } */
+
+
+
+
+input[type="radio"], input[type="checkbox"]{
+    margin: 0;
+}
+.clear-float:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.select-checkbox-item:hover{
+    background-color: #eee;
+}
+.select-checkbox-item{
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.input-checkbox-div{
+    float: left;
+    height: 18px;
+    box-sizing: content-box;
+}
+.input-checkbox-div input[type=checkbox]{
+    outline: none!important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    line-height: 18px;
+    vertical-align: top;
+    margin: 0;
+    padding: 10px;
+}
+.input-checkbox-div input[type=checkbox]:before{
+    /* content: url(../../assets/images/checkbox1.png); */
+    display: block;
+}
+.input-checkbox-div input[type=checkbox]:checked:before{
+    /* content: url(../../assets/images/checkbox2.png); */
+    display: block;
+}
+.item-name{
+    line-height: 18px;
+    padding: 10px 0;
+}
+.check-item{
+    float: left;
+    padding: 1px 0 1px 10px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+.check-close{
+    float: right;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+    padding: 2px;
+    box-sizing: border-box;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+.select-checkbox-div {
+    position: relative;
+}
+.select-checkbox-content{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 34px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #fff;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+}
+.selectOpen .select-checkbox-content{
+    display: block;
+}
+.selectOpen .select-checkbox-show{
+    border-width: 1px 1px 0 1px;
+    border-radius: 4px 4px 0 0;
+}
+.select-checkbox-show{
+    padding: 6px 18px 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    height: 34px;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.fa-select{
+    display: block;
+    border-color: #888 transparent transparent transparent;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    right: 5px;
+    top: 14px;
+    position: absolute;
+    z-index: 10;
+}
+.show-data{
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.show-data::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.show-data::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+        background-color: rgba(0,0,0,0.01);
+}
+
+
+    .show-data::-webkit-scrollbar-track:hover {
+        background-color: rgba(0,0,0,0.01);
+    }
+
+    .show-data::-webkit-scrollbar-track:active {
+        background-color: rgba(0,0,0,0.05);
+    }
+
+.show-data::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.show-data:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.show-data::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.show-data::-webkit-scrollbar-thumb:active {
+    background: rgba(0,0,0,0.6)
+} 
+
+
+.select-checkbox-content::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.select-checkbox-content::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0.01);
+}
+
+
+.select-checkbox-content::-webkit-scrollbar-track:hover {
+    background-color: rgba(0,0,0,0.01);
+}
+
+.select-checkbox-content::-webkit-scrollbar-track:active {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.select-checkbox-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.select-checkbox-content:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.select-checkbox-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.select-checkbox-content::-webkit-scrollbar-thumb:active {
+    background: rgba(0,0,0,0.6)
+}

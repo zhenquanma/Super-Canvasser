@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/super_canvasser   #Change database info before running the application
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+
+  jackson:
+    serialization:
+      indent_output: true
+#    schma:
+#      - classpath: sql/    #add sql file name at the end for the first time running, then comment it out after.
+
+#  redis:
+#    host: localhost
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+server:
+  port: 5438
+
+#server:
+#  port: 5438
+#  ssl:
+#    key-store-type: PKCS12
+#    key-store: classpath:keystore.p12
+#    key-alias: tomcat
+#    key-store-password: 12345678
+#
+#
+#security:
+#  require-ssl: true
+
+#  basic:
+#    enabled: false   #Turn off verification for testing
+
+#debug: true

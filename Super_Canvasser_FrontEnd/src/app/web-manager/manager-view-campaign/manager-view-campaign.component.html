@@ -1,0 +1,122 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+
+
+<div class="container" >
+    <div class="row">
+        <div class="col-sm-9">
+   
+        </div>
+
+
+                <div class="col-sm-9" >
+                                <agm-map 
+                                        [latitude]="inilat"
+                                        [longitude]="inilng"
+                                        [zoom]="zoom"
+                                        [disableDefaultUI]="false"
+                                        [zoomControl]="false"
+                                        (mapClick)="mapClicked($event)"
+                                        >
+
+                                        <agm-marker 
+                                            *ngFor="let m of markers; let i = index"
+                                            (markerClick)="clickedMarker(m.label, i)"
+                                            [latitude]="m.lat"
+                                            [longitude]="m.lng"
+                                            [label]="m.label"
+                                            [markerDraggable]="m.draggable"
+                                            (dragEnd)="markerDragEnd(m, $event)">
+                                            
+                                                    <agm-info-window>
+                                                    <strong>{{m.Info}}</strong>
+                                                    </agm-info-window>
+                
+                                        </agm-marker>
+
+
+                                </agm-map>
+                </div>
+<br/>
+<br/>
+
+                <div class="col-sm-3" >
+                    <app-manager-campaign-info></app-manager-campaign-info>
+                </div>
+        
+<br/>
+<br/>
+
+
+                <div>
+    
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="div-inline">
+                                                                <div class="row">
+                                                    
+                                                                            <div class="col-md-6">
+                                                                            <h4 >Assignment List (All assignments were created by System)</h4>
+                                                                            </div>
+                                                                
+
+                                                                            <!-- <div  class="col-sm-5">
+                                                                                
+                                                                                <button *ngIf="assignmentList=={}" class="btn btn-success" (click)="jumpCreateAssignment()">Create Assignment</button>
+                                                                            </div> -->
+
+
+                                                                            <div  class="col-sm-5">
+                                                                                
+                                                                                <button  class="btn btn-success" (click)="RefreshAssignmentList()">Refresh Assignment List</button>
+                                                                            </div>
+                                                                </div>          
+                                                        </div>
+
+
+                                                        <div class="table-responsive">
+                                                            
+                                                            <table id="mytable" class="table table-bordred table-striped" >
+                                                                    <thead>                     
+                                                                            <th>Assignment ID</th>
+                                                                     
+                                                                            <th>Assignment Date</th>
+                                                                            <th>Canvasser</th>
+                                                                            <th>Number of Locations</th>
+                                                                            <th>Duration</th>
+                                                                            <th>View</th>
+                                                                            <th>Edit</th>
+                                                                            <!-- <th>Delete</th> -->
+                                                                    </thead>
+                                                                    
+                                                                    <tbody>
+                                                                    
+                                                                            <tr *ngFor="let assignment of assignmentList">
+                                                                                <td *ngIf="assignment?.AssignmentID" >{{assignment.AssignmentID}}</td>
+                                                                              
+                                                                                <td *ngIf="assignment?.AssignmentID">{{assignment.AssignmentDate}}</td>
+                                                                                <td *ngIf="assignment?.AssignmentID">{{assignment.Canvasser}}</td>
+                                                                                <td *ngIf="assignment?.AssignmentID">{{assignment.LocationNumber}}</td>
+                                                                                <td *ngIf="assignment?.AssignmentID">{{assignment.Duration}}</td>
+                                                                                <td><p data-placement="top" data-toggle="tooltip" title="View"><button class="btn btn-primary btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)=viewAssignment(assignment)><span class="glyphicon glyphicon-eye-open"></span></button></p></td>
+                                                                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" (click)=editAssignment(assignment)><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                                                                <!-- <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)=deleteAssignment(assignment)><span class="glyphicon glyphicon-trash"></span></button></p></td> -->
+                                                                            </tr>
+                                                                    </tbody>
+
+                                                            </table>
+
+
+
+                                                    </div>
+                                                </div>
+                </div>
+
+
+    </div>
+</div>
